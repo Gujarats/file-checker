@@ -1,5 +1,5 @@
 # File checker 
-This cli applicaiton will print all the files that has zero byte in specific directory
+This cli applicaiton will print all the files which specific byte size (default 0 byte) in specific directory
 
 ## how to install 
 Install GO in your os. then
