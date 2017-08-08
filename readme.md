@@ -25,11 +25,12 @@ VERSION:
    1.0.0
 
 COMMANDS:
-     find, f  Show file result
      help, h  Shows a list of commands or help for one command
 
 GLOBAL OPTIONS:
    --location value  specify files location (default: "files/")
+   --size value      specify minimum files size (default: "0")
    --help, -h        show help
    --version, -v     print the version
+
 ```
