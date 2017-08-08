@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
+	"path"
 	"strconv"
 
 	"github.com/urfave/cli"
@@ -69,6 +70,10 @@ func zeroFiles(fileLocation string, fileSize int64) {
 	}
 
 	for _, file := range files {
+		if file.IsDir() {
+			zeroFiles(path.Join(fileLocation, file.Name()), fileSize)
+		}
+
 		if file.Size() == fileSize {
 			fmt.Println("Name :", file.Name())
 		}
