@@ -54,7 +54,7 @@ func main() {
 			return nil
 		}
 		fmt.Println("finding the file size equal to ", fileSize)
-		zeroFiles(fileLocation, fileSizeConv)
+		printFiles(fileLocation, fileSizeConv)
 		return nil
 	}
 
@@ -62,8 +62,8 @@ func main() {
 
 }
 
-// print zero files with name and size and location
-func zeroFiles(fileLocation string, fileSize int64) {
+// print specific files with name and size and location
+func printFiles(fileLocation string, fileSize int64) {
 	files, err := ioutil.ReadDir(fileLocation)
 	if err != nil {
 		log.Fatal(err)
@@ -71,7 +71,7 @@ func zeroFiles(fileLocation string, fileSize int64) {
 
 	for _, file := range files {
 		if file.IsDir() {
-			zeroFiles(path.Join(fileLocation, file.Name()), fileSize)
+			printFiles(path.Join(fileLocation, file.Name()), fileSize)
 		}
 
 		if file.Size() == fileSize {
