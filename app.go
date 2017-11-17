@@ -21,7 +21,7 @@ func main() {
 
 	app := cli.NewApp()
 	app.Name = "MyCli"
-	app.Usage = "To check csv files"
+	app.Usage = "finding zero byte file"
 	app.Version = "1.0.0"
 
 	// flags for option command
@@ -63,15 +63,15 @@ func main() {
 }
 
 // print specific files with name and size and location
-func printFiles(fileLocation string, fileSize int64) {
-	files, err := ioutil.ReadDir(fileLocation)
+func printFiles(directory string, fileSize int64) {
+	files, err := ioutil.ReadDir(directory)
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	for _, file := range files {
 		if file.IsDir() {
-			printFiles(path.Join(fileLocation, file.Name()), fileSize)
+			printFiles(path.Join(directory, file.Name()), fileSize)
 		}
 
 		if file.Size() == fileSize {
